@@ -21,21 +21,17 @@ export default {
     computed: {
         routingNumber: {
             get() {
-                console.log('get')
                 return this.$store.state.gift.routingNumber
             },
             set(value) {
-                console.log('set')
                 this.$store.commit('updateRoutingNumber', value)
             }
         },
         accountNumber: {
             get() {
-                console.log('get')
                 return this.$store.state.gift.accountNumber
             },
             set(value) {
-                console.log('set')
                 this.$store.commit('updateAccountNumber', value)
             }
         }

@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        formFlow: ['name', 'giftRecurrence', 'tenderType'],
+        formFlow: ['name', 'giftRecurrence', 'tenderType', 'review'],
         formStep: 0,
         gift: {
             firstName: '',
@@ -26,6 +26,9 @@ export default new Vuex.Store({
         },
         formStepName: function(state) {
             return state.formFlow[state.formStep]
+        },
+        reviewGift: function(state) {
+            return state.gift
         }
     },
     mutations: {
