@@ -14,8 +14,7 @@ export default {
     name: 'GiftRecurrence',
     methods: {
         recurrenceCap: function(event) {
-            //Set recurrence_cap to event.target.value
-            //Advance step
+            this.$store.commit('updateRecurrenceCap', parseInt(event.target.value))
             this.$store.dispatch('advanceStep')
         }
     }

@@ -4,11 +4,11 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputRoutingNum">Routing Number</label>
-                    <input type="text" id="inputRoutingNum" class="form-control" placeholder="Routing Number">
+                    <input type="text" id="inputRoutingNum" class="form-control" placeholder="Routing Number" ref="routingNumber" v-model="routingNumber">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputAccountNum">Account Number</label>
-                    <input type="text" id="inputAccountNum" class="form-control" placeholder="Account Number">
+                    <input type="text" id="inputAccountNum" class="form-control" placeholder="Account Number" ref="accountNumber" v-model="accountNumber">
                 </div>
             </div>
         </form>
@@ -18,8 +18,33 @@
 <script>
 export default {
     name: 'Echeck',
+    computed: {
+        routingNumber: {
+            get() {
+                console.log('get')
+                return this.$store.state.gift.routingNumber
+            },
+            set(value) {
+                console.log('set')
+                this.$store.commit('updateRoutingNumber', value)
+            }
+        },
+        accountNumber: {
+            get() {
+                console.log('get')
+                return this.$store.state.gift.accountNumber
+            },
+            set(value) {
+                console.log('set')
+                this.$store.commit('updateAccountNumber', value)
+            }
+        }
+    },
     beforeMount: function() {
         this.$store.commit('updateTenderType', 'ECHK')
+    },
+    mounted: function() {
+        this.$refs.routingNumber.focus()
     }
 }
 </script>

@@ -5,12 +5,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        formFlow: ['name', 'tenderType', 'giftRecurrence'],
+        formFlow: ['name', 'giftRecurrence', 'tenderType'],
         formStep: 0,
         gift: {
             firstName: '',
             lastName: '',
-            tenderType: ''
+            tenderType: '',
+            routingNumber: '',
+            accountNumber: '',
+            ccName: '',
+            ccNumber: '',
+            ccExpire: '',
+            ccSecurity: '',
+            recurrence_cap: ''
         }
     },
     getters: {
@@ -31,6 +38,27 @@ export default new Vuex.Store({
         updateTenderType: function (state, type) {
             state.gift.tenderType = type
         },
+        updateRoutingNumber: function (state, number) {
+            state.gift.routingNumber = number
+        },
+        updateAccountNumber: function (state, number) {
+            state.gift.accountNumber = number
+        },
+        updateCCName: function (state, name) {
+            state.gift.ccName = name
+        },
+        updateCCNumber: function (state, number) {
+            state.gift.ccNumber = number
+        },
+        updateCCExpire: function (state, date) {
+            state.gift.ccExpire = date
+        },
+        updateCCSecurity: function (state, cvv) {
+            state.gift.ccSecurity = cvv
+        },
+        updateRecurrenceCap: function (state, value) {
+            state.gift.recurrence_cap = value
+        },
         advanceStep: function(state) {
             state.formStep++
         },
@@ -50,7 +78,6 @@ export default new Vuex.Store({
         },
         updateStep: function(state, stepInfo) {
             let index = stepInfo[1]
-            console.log(stepInfo)
             state.formFlow[index] = stepInfo[0]
         }
     },
@@ -69,7 +96,6 @@ export default new Vuex.Store({
             var flowHasStep = false
             var stepInfo = [formUpdateObj.newStep]
             var location = formUpdateObj.location
-            console.log(location)
             for (let i=0; i < formUpdateObj.checkFlow.length; i++) {
                 if (formFlow.indexOf(formUpdateObj.checkFlow[i]) !== -1 ){
                     stepInfo.push(formFlow.indexOf(formUpdateObj.checkFlow[i]))
@@ -80,8 +106,6 @@ export default new Vuex.Store({
             }
             if (!flowHasStep) {
                 context.commit('addStep', formUpdateObj)
-            } else {
-                console.log('we should have already updated the form flow')
             }
         }
     }
