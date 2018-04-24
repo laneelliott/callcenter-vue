@@ -17,7 +17,7 @@ export default {
             return {
                 checkFlow: ['premium'],
                 newStep: 'premium',
-                location: 'tenderType'
+                location: 'end'
             }
         }
     },
@@ -29,7 +29,6 @@ export default {
             } else {
                 return this.$store.dispatch('deleteStep', 'premium').then(this.$store.dispatch('advanceStep'))
             }
-            
         }
     }
 }

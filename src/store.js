@@ -29,7 +29,11 @@ export default new Vuex.Store({
             return state.formFlow[state.formStep]
         },
         reviewGift: function(state) {
-            return state.gift
+            if (state.formStep == state.formFlow.length-1) {
+                return true
+            } else {
+                return false
+            }
         }
     },
     mutations: {
@@ -77,7 +81,12 @@ export default new Vuex.Store({
         },
         addStep: function (state, formUpdateObj) {
             var flowTempFirst, flowTempLast
-            var index = state.formFlow.indexOf(formUpdateObj.location)
+            var index
+            if (formUpdateObj.location === 'end') {
+                index = state.formFlow.length-2
+            } else {
+                index = state.formFlow.indexOf(formUpdateObj.location)
+            }
             flowTempFirst = state.formFlow.slice(0, index+1)
             flowTempLast = state.formFlow.slice(index+1)
             flowTempFirst.push(formUpdateObj.newStep)

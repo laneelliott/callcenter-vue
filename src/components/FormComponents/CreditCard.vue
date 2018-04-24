@@ -31,41 +31,33 @@ export default {
     computed: {
         ccName: {
             get() {
-                console.log('get')
                 return this.$store.state.gift.ccName
             },
             set(value) {
-                console.log('set')
                 this.$store.commit('updateCCName', value)
             }
         },
         ccNumber: {
             get() {
-                console.log('get')
                 return this.$store.state.gift.ccNumber
             },
             set(value) {
-                console.log('set')
                 this.$store.commit('updateCCNumber', value)
             }
         },
         ccExpire: {
             get() {
-                console.log('get')
                 return this.$store.state.gift.ccExpire
             },
             set(value) {
-                console.log('set')
                 this.$store.commit('updateCCExpire', value)
             }
         },
         ccSecurity: {
             get() {
-                console.log('get')
                 return this.$store.state.gift.ccSecurity
             },
             set(value) {
-                console.log('set')
                 this.$store.commit('updateCCSecurity', value)
             }
         }
