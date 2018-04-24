@@ -12,10 +12,24 @@
 <script>
 export default {
     name: 'GiftRecurrence',
+    computed: {
+        formUpdateObj: function() {
+            return {
+                checkFlow: ['premium'],
+                newStep: 'premium',
+                location: 'tenderType'
+            }
+        }
+    },
     methods: {
         recurrenceCap: function(event) {
             this.$store.commit('updateRecurrenceCap', parseInt(event.target.value))
-            this.$store.dispatch('advanceStep')
+            if (event.target.value === '1') {
+                return this.$store.dispatch('updateFormFlow', this.formUpdateObj).then(this.$store.dispatch('advanceStep'))
+            } else {
+                return this.$store.dispatch('deleteStep', 'premium').then(this.$store.dispatch('advanceStep'))
+            }
+            
         }
     }
 }

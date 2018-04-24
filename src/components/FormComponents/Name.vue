@@ -21,21 +21,17 @@ export default {
     computed: {
         firstName: {
             get() {
-                console.log('get')
                 return this.$store.state.gift.firstName
             },
             set(value) {
-                console.log('set')
                 this.$store.commit('updateFirstName', value)
             }
         },
         lastName: {
             get() {
-                console.log('get')
                 return this.$store.state.gift.lastName
             },
             set(value) {
-                console.log('set')
                 this.$store.commit('updateLastName', value)
             }
         }

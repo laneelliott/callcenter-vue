@@ -17,7 +17,8 @@ export default new Vuex.Store({
             ccNumber: '',
             ccExpire: '',
             ccSecurity: '',
-            recurrence_cap: ''
+            recurrence_cap: '',
+            premium: ''
         }
     },
     getters: {
@@ -62,6 +63,9 @@ export default new Vuex.Store({
         updateRecurrenceCap: function (state, value) {
             state.gift.recurrence_cap = value
         },
+        updatePremium: function (state, value) {
+            state.gift.premium = value
+        },
         advanceStep: function(state) {
             state.formStep++
         },
@@ -79,6 +83,12 @@ export default new Vuex.Store({
             flowTempFirst.push(formUpdateObj.newStep)
             state.formFlow = flowTempFirst.concat(flowTempLast)
         },
+        deleteStep: function(state, stepName) {
+            let index = state.formFlow.indexOf(stepName)
+            if (index > -1) {
+                state.formFlow.splice(index, 1);
+            }
+        },
         updateStep: function(state, stepInfo) {
             let index = stepInfo[1]
             state.formFlow[index] = stepInfo[0]
@@ -94,8 +104,17 @@ export default new Vuex.Store({
         loadStep: function(context, stepIndex) {
             context.commit('loadStep', stepIndex)
         },
+        deleteStep: function(context, stepName) {
+            context.commit('deleteStep', stepName)
+        },
         updateFormFlow: function(context, formUpdateObj) {
-            let formFlow = this.state.formFlow
+            /* formUpdateObj: {
+                checkFlow: [array of formSteps to check and overwrite if they already are in the form flow],
+                newStep: 'name of the new component step to add',
+                location: 'name of the form step you want to add the new step AFTER'
+            }
+            */
+            var formFlow = this.state.formFlow
             var flowHasStep = false
             var stepInfo = [formUpdateObj.newStep]
             var location = formUpdateObj.location

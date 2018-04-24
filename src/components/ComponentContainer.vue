@@ -9,6 +9,7 @@
       <echeck v-if="formStepName === 'echeck'"></echeck>
       <credit-card v-if="formStepName === 'creditCard'"></credit-card>
       <gift-recurrence v-if="formStepName === 'giftRecurrence'"></gift-recurrence>
+      <premium v-if="formStepName === 'premium'"></premium>
       <review v-if="formStepName === 'review'"></review>
       <!-- End V-If componets -->
       <prev-next></prev-next>
@@ -23,6 +24,7 @@ import Tender from './FormComponents/Tender'
 import Echeck from './FormComponents/Echeck'
 import CreditCard from './FormComponents/CreditCard'
 import GiftRecurrence from './FormComponents/GiftRecurrence'
+import Premium from './FormComponents/Premium'
 import Review from './FormComponents/Review'
 
 export default {
@@ -34,6 +36,7 @@ export default {
         'echeck': Echeck,
         'credit-card': CreditCard,
         'gift-recurrence': GiftRecurrence,
+        'premium': Premium,
         'review': Review
     },
     computed: {
