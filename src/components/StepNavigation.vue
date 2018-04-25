@@ -25,7 +25,7 @@ export default {
             return this.$store.getters.formStepName
         },
         formFlow: function() {
-            return this.$store.state.formFlow
+            return this.$store.state.formData.journey
         }
     },
     methods: {

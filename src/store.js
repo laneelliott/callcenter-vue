@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        formFlow: ['name', 'gift-recurrence', 'tender', 'review'],
+        formData: {},
         formStep: 0,
         gift: {
             firstName: '',
@@ -26,10 +26,10 @@ export default new Vuex.Store({
             return state.formStep
         },
         formStepName: function(state) {
-            return state.formFlow[state.formStep]
+            return state.formData.journey[state.formStep]
         },
         reviewGift: function(state) {
-            if (state.formStep == state.formFlow.length-1) {
+            if (state.formStep == state.formData.journey.length-1) {
                 return true
             } else {
                 return false
@@ -38,37 +38,37 @@ export default new Vuex.Store({
     },
     mutations: {
         updateFirstName: function(state, name) {
-            state.gift.firstName = name
+            state.formData.donorInfo.firstName = name
         },
         updateLastName: function (state, name) {
-            state.gift.lastName = name
+            state.formData.donorInfo.lastName = name
         },
         updateTenderType: function (state, type) {
-            state.gift.tenderType = type
+            state.formData.donorInfo.tenderType = type
         },
         updateRoutingNumber: function (state, number) {
-            state.gift.routingNumber = number
+            state.formData.donorInfo.routingNumber = number
         },
         updateAccountNumber: function (state, number) {
-            state.gift.accountNumber = number
+            state.formData.donorInfo.accountNumber = number
         },
         updateCCName: function (state, name) {
-            state.gift.ccName = name
+            state.formData.donorInfo.ccName = name
         },
         updateCCNumber: function (state, number) {
-            state.gift.ccNumber = number
+            state.formData.donorInfo.ccNumber = number
         },
         updateCCExpire: function (state, date) {
-            state.gift.ccExpire = date
+            state.formData.donorInfo.ccExpire = date
         },
         updateCCSecurity: function (state, cvv) {
-            state.gift.ccSecurity = cvv
+            state.formData.donorInfo.ccSecurity = cvv
         },
         updateRecurrenceCap: function (state, value) {
-            state.gift.recurrence_cap = value
+            state.formData.donorInfo.recurrence_cap = value
         },
         updatePremium: function (state, value) {
-            state.gift.premium = value
+            state.formData.donorInfo.premium = value
         },
         advanceStep: function(state) {
             state.formStep++
@@ -83,24 +83,27 @@ export default new Vuex.Store({
             var flowTempFirst, flowTempLast
             var index
             if (formUpdateObj.location === 'end') {
-                index = state.formFlow.length-2
+                index = state.formData.journey.length-2
             } else {
-                index = state.formFlow.indexOf(formUpdateObj.location)
+                index = state.formData.journey.indexOf(formUpdateObj.location)
             }
-            flowTempFirst = state.formFlow.slice(0, index+1)
-            flowTempLast = state.formFlow.slice(index+1)
+            flowTempFirst = state.formData.journey.slice(0, index+1)
+            flowTempLast = state.formData.journey.slice(index+1)
             flowTempFirst.push(formUpdateObj.newStep)
-            state.formFlow = flowTempFirst.concat(flowTempLast)
+            state.formData.journey = flowTempFirst.concat(flowTempLast)
         },
         deleteStep: function(state, stepName) {
-            let index = state.formFlow.indexOf(stepName)
+            let index = state.formData.journey.indexOf(stepName)
             if (index > -1) {
-                state.formFlow.splice(index, 1);
+                state.formData.journey.splice(index, 1);
             }
         },
         updateStep: function(state, stepInfo) {
             let index = stepInfo[1]
-            state.formFlow[index] = stepInfo[0]
+            state.formData.journey[index] = stepInfo[0]
+        },
+        importState: function(state, payload) {
+            state.formData = payload
         }
     },
     actions: {
@@ -123,7 +126,7 @@ export default new Vuex.Store({
                 location: 'name of the form step you want to add the new step AFTER'
             }
             */
-            var formFlow = this.state.formFlow
+            var formFlow = this.state.formData.journey
             var flowHasStep = false
             var stepInfo = [formUpdateObj.newStep]
             var location = formUpdateObj.location
