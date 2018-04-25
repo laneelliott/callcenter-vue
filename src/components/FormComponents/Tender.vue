@@ -4,7 +4,7 @@
         <button class="btn btn-primary btn-larg btn-block" value="echeck" @click="updateTender($event)">Echeck</button>
     </div>
     <div class="col-sm-4">
-        <button class="btn btn-primary btn-larg btn-block" value="creditCard" @click="updateTender($event)">Credit Card</button>
+        <button class="btn btn-primary btn-larg btn-block" value="credit-card" @click="updateTender($event)">Credit Card</button>
     </div>
 </div>
 </template>

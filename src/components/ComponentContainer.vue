@@ -1,18 +1,12 @@
 <template>
   <div class="container">
-      <h1 class="text-center">Component Container</h1>
-      <hr>
-      <step-nav class="text-center"></step-nav>
-      <!-- V-If components Here -->
-      <name v-if="formStepName === 'name'"></name>
-      <tender v-if="formStepName === 'tenderType'"></tender>
-      <echeck v-if="formStepName === 'echeck'"></echeck>
-      <credit-card v-if="formStepName === 'creditCard'"></credit-card>
-      <gift-recurrence v-if="formStepName === 'giftRecurrence'"></gift-recurrence>
-      <premium v-if="formStepName === 'premium'"></premium>
-      <review v-if="formStepName === 'review'"></review>
-      <!-- End V-If componets -->
-      <prev-next></prev-next>
+        <h1 class="text-center">Component Container</h1>
+        <hr>
+        <step-nav class="text-center"></step-nav>
+        <!-- Wizard Step Components -->
+        <component :is="formStepName"></component>
+        <!-- End Wizard Step Components -->
+        <prev-next></prev-next>
   </div>
 </template>
 

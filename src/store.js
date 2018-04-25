@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        formFlow: ['name', 'giftRecurrence', 'tenderType', 'review'],
+        formFlow: ['name', 'gift-recurrence', 'tender', 'review'],
         formStep: 0,
         gift: {
             firstName: '',
