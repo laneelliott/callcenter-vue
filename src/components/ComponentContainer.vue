@@ -20,6 +20,7 @@ import CreditCard from './FormComponents/CreditCard'
 import GiftRecurrence from './FormComponents/GiftRecurrence'
 import Premium from './FormComponents/Premium'
 import Review from './FormComponents/Review'
+import AdminRedirect from './FormComponents/AdminRedirect'
 
 export default {
     components: {
@@ -31,7 +32,8 @@ export default {
         'credit-card': CreditCard,
         'gift-recurrence': GiftRecurrence,
         'premium': Premium,
-        'review': Review
+        'review': Review,
+        'admin-redirect': AdminRedirect
     },
     computed: {
         formStepName: function() {

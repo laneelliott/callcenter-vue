@@ -1,13 +1,18 @@
 <template>
   <div id="app">
+    <route-toggle></route-toggle>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import RouteToggle from './components/RouteToggle'
+
 export default {
   name: 'App',
-  
+  components: {
+    'route-toggle': RouteToggle
+  }
 }
 </script>
 

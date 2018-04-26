@@ -21,7 +21,7 @@ export default {
     computed: {
         firstName: {
             get() {
-                return this.$store.state.gift.firstName
+                return this.$store.state.formData.donorInfo.firstName
             },
             set(value) {
                 this.$store.commit('updateFirstName', value)
@@ -29,7 +29,7 @@ export default {
         },
         lastName: {
             get() {
-                return this.$store.state.gift.lastName
+                return this.$store.state.formData.donorInfo.lastName
             },
             set(value) {
                 this.$store.commit('updateLastName', value)

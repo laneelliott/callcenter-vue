@@ -13,7 +13,7 @@ export default new Router({
       component: ComponentContainer
     },
     {
-      path: '/creator',
+      path: '/admin',
       name: 'FormBuilder',
       component: FormBuilder
     }

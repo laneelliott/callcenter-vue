@@ -5,21 +5,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        formData: {},
+        formData: {
+            formName: 'default',
+            journey: ['admin-redirect'],
+            donorInfo: {
+                firstName: '',
+                lastName: '',
+                tenderType: '',
+                routingNumber: '',
+                accountNumber: '',
+                ccName: '',
+                ccNumber: '',
+                ccExpire: '',
+                ccSecurity: '',
+                recurrence_cap: '',
+                premium: ''
+            }
+        },
         formStep: 0,
-        gift: {
-            firstName: '',
-            lastName: '',
-            tenderType: '',
-            routingNumber: '',
-            accountNumber: '',
-            ccName: '',
-            ccNumber: '',
-            ccExpire: '',
-            ccSecurity: '',
-            recurrence_cap: '',
-            premium: ''
-        }
+        adminToggle: false
     },
     getters: {
         formStep: function(state) {
@@ -34,6 +38,9 @@ export default new Vuex.Store({
             } else {
                 return false
             }
+        },
+        adminToggle: function(state) {
+            return state.adminToggle
         }
     },
     mutations: {
@@ -104,6 +111,9 @@ export default new Vuex.Store({
         },
         importState: function(state, payload) {
             state.formData = payload
+        },
+        adminToggle: function(state, toggleState) {
+            state.adminToggle = !state.adminToggle
         }
     },
     actions: {

@@ -31,7 +31,7 @@ export default {
     computed: {
         ccName: {
             get() {
-                return this.$store.state.gift.ccName
+                return this.$store.state.formData.donorInfo.ccName
             },
             set(value) {
                 this.$store.commit('updateCCName', value)
@@ -39,7 +39,7 @@ export default {
         },
         ccNumber: {
             get() {
-                return this.$store.state.gift.ccNumber
+                return this.$store.state.formData.donorInfo.ccNumber
             },
             set(value) {
                 this.$store.commit('updateCCNumber', value)
@@ -47,7 +47,7 @@ export default {
         },
         ccExpire: {
             get() {
-                return this.$store.state.gift.ccExpire
+                return this.$store.state.formData.donorInfo.ccExpire
             },
             set(value) {
                 this.$store.commit('updateCCExpire', value)
@@ -55,7 +55,7 @@ export default {
         },
         ccSecurity: {
             get() {
-                return this.$store.state.gift.ccSecurity
+                return this.$store.state.formData.donorInfo.ccSecurity
             },
             set(value) {
                 this.$store.commit('updateCCSecurity', value)

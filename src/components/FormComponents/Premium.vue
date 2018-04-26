@@ -17,7 +17,7 @@ export default {
     computed: {
         premium: {
             get() {
-                return this.$store.state.gift.premium
+                return this.$store.state.formData.donorInfo.premium
             },
             set(value) {
                 this.$store.commit('updatePremium', value)

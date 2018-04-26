@@ -11,7 +11,7 @@ export default {
     name: 'DataImport',
     data() {
         return {
-            wizardData: {
+            data: {
                 formName: 'test-callcenter1',
                 journey: ['name', 'tender', 'review'],
                 donorInfo: {
@@ -33,8 +33,8 @@ export default {
     methods: {
         sendData: function() {
             console.log('Data Sent')
-            console.log(this.wizardData)
-            this.$store.commit('importState', this.wizardData)
+            console.log(this.data)
+            this.$store.commit('importState', this.data)
         }
     }
 }

@@ -21,7 +21,7 @@ export default {
     computed: {
         routingNumber: {
             get() {
-                return this.$store.state.gift.routingNumber
+                return this.$store.state.formData.donorInfo.routingNumber
             },
             set(value) {
                 this.$store.commit('updateRoutingNumber', value)
@@ -29,7 +29,7 @@ export default {
         },
         accountNumber: {
             get() {
-                return this.$store.state.gift.accountNumber
+                return this.$store.state.formData.donorInfo.accountNumber
             },
             set(value) {
                 this.$store.commit('updateAccountNumber', value)

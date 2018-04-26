@@ -88,40 +88,40 @@ export default {
     name: 'Review',
     computed: {
         firstName: {
-            get() {return this.$store.state.gift.firstName}
+            get() {return this.$store.state.formData.donorInfo.firstName}
         },
         lastName: {
-            get() {return this.$store.state.gift.lastName}
+            get() {return this.$store.state.formData.donorInfo.lastName}
         },
         tenderType: {
-            get() {return this.$store.state.gift.tenderType}
+            get() {return this.$store.state.formData.donorInfo.tenderType}
         },
         ccName: {
-            get() {return this.$store.state.gift.ccName}
+            get() {return this.$store.state.formData.donorInfo.ccName}
         },
         ccNumber: {
-            get() {return this.$store.state.gift.ccNumber}
+            get() {return this.$store.state.formData.donorInfo.ccNumber}
         },
         ccExpire: {
-            get() {return this.$store.state.gift.ccExpire}
+            get() {return this.$store.state.formData.donorInfo.ccExpire}
         },
         ccSecurity: {
-            get() {return this.$store.state.gift.ccSecurity}
+            get() {return this.$store.state.formData.donorInfo.ccSecurity}
         },
         routingNumber: {
-            get() {return this.$store.state.gift.routingNumber}
+            get() {return this.$store.state.formData.donorInfo.routingNumber}
         },
         accountNumber: {
-            get() {return this.$store.state.gift.accountNumber}
+            get() {return this.$store.state.formData.donorInfo.accountNumber}
         },
         premium: {
-            get() {return this.$store.state.gift.premium}
+            get() {return this.$store.state.formData.donorInfo.premium}
         },
         giftRecurrence: {
             get() {
-                if (this.$store.state.gift.recurrence_cap === 0) {
+                if (this.$store.state.formData.donorInfo.recurrence_cap === 0) {
                     return 'AutoGift'
-                } else if (this.$store.state.gift.recurrence_cap === 1) {
+                } else if (this.$store.state.formData.donorInfo.recurrence_cap === 1) {
                     return 'Single Gift'
                 } else {
                     return ''
