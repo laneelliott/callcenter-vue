@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import admin from './store_modules/admin'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+    modules: {
+        admin: admin
+    },
     state: {
         formData: {
             formName: 'default',

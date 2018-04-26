@@ -26,6 +26,12 @@ export default {
             }
             this.$store.commit('adminToggle', this.toggleState)
         }
+    },
+    mounted() {
+        var path = this.$router.resolve(location)
+        if (path.location.path == '/admin') {
+            this.$store.commit('adminToggle', this.toggleState)
+        }
     }
 }
 </script>
