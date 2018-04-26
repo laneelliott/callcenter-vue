@@ -1,4 +1,5 @@
 const admin = {
+    namespaced: true,
     state: {
         data: {
             formName: 'default',
@@ -16,13 +17,17 @@ const admin = {
                 recurrence_cap: '',
                 premium: ''
             }
-        }
+        },
     },
     getters: {
-
+        retrieveData: function(state) {
+            return state.data
+        }
     },
     mutations: {
-
+        addStep: function (state, stepName) {
+            state.data.journey.push(stepName)
+        }
     },
     actions: {
 
