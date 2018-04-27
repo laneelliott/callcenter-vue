@@ -11,6 +11,12 @@
                     <input type="text" id="inputLastName" class="form-control" placeholder="Last name" ref="lastName" v-model="lastName">
                 </div>
             </div>
+            <div class="form-row">
+                <div class="form-group col-md-6" v-if="nameProps.config !== 'name-only'">
+                    <label for="inputEmail">Email Address</label>
+                    <input type="text" id="inputEmail" class="form-control" placeholder="dwight@moody.edu" ref="email" v-model="email">
+                </div>
+            </div>
         </form>
     </div>
 </template>
@@ -34,6 +40,17 @@ export default {
             set(value) {
                 this.$store.commit('updateLastName', value)
             }
+        },
+        email: {
+            get() {
+                return this.$store.state.formData.donorInfo.email
+            },
+            set(value) {
+                this.$store.commit('updateEmail', value)
+            }
+        },
+        nameProps: function() {
+            return this.$store.getters.componentProps
         }
     },
     mounted: function() {

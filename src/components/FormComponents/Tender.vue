@@ -15,13 +15,26 @@ export default {
     computed: {
         formStepName: function() {
             return this.$store.getters.formStepName
+        },
+        newStepObject: function() {
+            if (event.target.value === 'echeck') {
+                return {
+                    component: 'echeck',
+                    display: 'Echeck Account Information'
+                }
+            } else {
+                return {
+                    component: 'credit-card',
+                    display: 'Credit Card Information'
+                }
+            }
         }
     },
     methods: {
         updateTender: function(event) {
             var flowUpdateObj = {
-                checkFlow: ['echeck', 'creditCard'],
-                newStep: event.target.value,
+                checkFlow: ['echeck', 'credit-card'],
+                newStep: this.newStepObject,
                 location: this.formStepName
             }
             

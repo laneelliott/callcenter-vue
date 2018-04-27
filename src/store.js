@@ -15,6 +15,7 @@ export default new Vuex.Store({
             donorInfo: {
                 firstName: '',
                 lastName: '',
+                email: '',
                 tenderType: '',
                 routingNumber: '',
                 accountNumber: '',
@@ -36,6 +37,9 @@ export default new Vuex.Store({
         formStepName: function(state) {
             return state.formData.journey[state.formStep].component
         },
+        componentProps: function(state) {
+            return state.formData.journey[state.formStep]
+        },
         formStepDisplay: function(state) {
             return state.formData.journey[state.formStep].display
         },
@@ -56,6 +60,9 @@ export default new Vuex.Store({
         },
         updateLastName: function (state, name) {
             state.formData.donorInfo.lastName = name
+        },
+        updateEmail: function (state, email) {
+            state.formData.donorInfo.email = email
         },
         updateTenderType: function (state, type) {
             state.formData.donorInfo.tenderType = type
@@ -99,7 +106,7 @@ export default new Vuex.Store({
             if (formUpdateObj.location === 'end') {
                 index = state.formData.journey.length-2
             } else {
-                index = state.formData.journey.indexOf(formUpdateObj.location)
+                index = state.formData.journey.map(function (e) { return e.component; }).indexOf(formUpdateObj.location)
             }
             flowTempFirst = state.formData.journey.slice(0, index+1)
             flowTempLast = state.formData.journey.slice(index+1)
@@ -139,17 +146,19 @@ export default new Vuex.Store({
         updateFormFlow: function(context, formUpdateObj) {
             /* formUpdateObj: {
                 checkFlow: [array of formSteps to check and overwrite if they already are in the form flow],
-                newStep: 'name of the new component step to add',
+                newStep: {object of new component to add}
                 location: 'name of the form step you want to add the new step AFTER'
             }
+            Function lets you find the index of an item nested in an array of objects
+            (formFlow.map(function (e) { return e.component; }).indexOf(stepInfo) !== -1 )
             */
             var formFlow = this.state.formData.journey
             var flowHasStep = false
             var stepInfo = [formUpdateObj.newStep]
             var location = formUpdateObj.location
             for (let i=0; i < formUpdateObj.checkFlow.length; i++) {
-                if (formFlow.indexOf(formUpdateObj.checkFlow[i]) !== -1 ){
-                    stepInfo.push(formFlow.indexOf(formUpdateObj.checkFlow[i]))
+                if (formFlow.map(function(e) { return e.component; }).indexOf(formUpdateObj.checkFlow[i]) !== -1 ){
+                    stepInfo.push(formFlow.map(function (e) { return e.component; }).indexOf(formUpdateObj.checkFlow[i]))
                     flowHasStep = true
                     context.commit('updateStep', stepInfo)
                     return flowHasStep

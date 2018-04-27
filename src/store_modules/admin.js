@@ -7,6 +7,7 @@ const admin = {
             donorInfo: {
                 firstName: '',
                 lastName: '',
+                email: '',
                 tenderType: '',
                 routingNumber: '',
                 accountNumber: '',

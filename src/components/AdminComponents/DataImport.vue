@@ -12,33 +12,21 @@ export default {
     computed: {
         adminData: function() {
             return this.$store.getters['admin/retrieveData']
+        },
+        containsReview: function() {
+            return this.adminData.journey.map(function(e) {return e.component;}).indexOf('review')
         }
     },
-    // data() {
-    //     return {
-    //         data: {
-    //             formName: 'test-callcenter1',
-    //             journey: ['tender'],
-    //             donorInfo: {
-    //                 firstName: '',
-    //                 lastName: '',
-    //                 tenderType: '',
-    //                 routingNumber: '',
-    //                 accountNumber: '',
-    //                 ccName: '',
-    //                 ccNumber: '',
-    //                 ccExpire: '',
-    //                 ccSecurity: '',
-    //                 recurrence_cap: '',
-    //                 premium: ''
-    //             }
-    //         }
-    //     }
-    // },
     methods: {
         sendData: function() {
             console.log('Data Sent')
-            console.log(this.adminData)
+            console.log(this.containsReview)
+            if (this.containsReview !== -1) {
+                console.log('Found Review')
+            } else {
+                this.$store.commit('admin/addStep', {component:'review', display: 'Review Gift'})
+            }
+           
             this.$store.commit('importState', this.adminData)
         }
     }

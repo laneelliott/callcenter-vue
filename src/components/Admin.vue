@@ -5,6 +5,8 @@
         <div class="row">
             <div class="col-sm-6">
                 <pi-config></pi-config>
+                <tender-config></tender-config>
+                <gr-config></gr-config>
             </div>
             <div class="col-sm-6">
                 <form-item v-for="(item, index) in adminJourney" v-bind:item="item" v-bind:index="index" v-bind:key="item.id">
@@ -20,6 +22,8 @@
 <script>
 import DataImport from './AdminComponents/DataImport'
 import PersonalInfoConfig from './AdminComponents/PersonalInfoConfig'
+import TenderConfig from './AdminComponents/TenderConfig'
+import GiftRecurrenceConfig from './AdminComponents/GiftRecurrenceConfig'
 import FormItem from './AdminComponents/FormItem'
 
 export default {
@@ -27,6 +31,8 @@ export default {
     components: {
         'data-import': DataImport,
         'pi-config': PersonalInfoConfig,
+        'tender-config': TenderConfig,
+        'gr-config': GiftRecurrenceConfig,
         'form-item': FormItem
     },
     computed: {
