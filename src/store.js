@@ -11,7 +11,7 @@ export default new Vuex.Store({
     state: {
         formData: {
             formName: 'default',
-            journey: ['admin-redirect'],
+            journey: [{component: 'admin-redirect',display: 'NO DATA FOUND'}],
             donorInfo: {
                 firstName: '',
                 lastName: '',
@@ -34,7 +34,10 @@ export default new Vuex.Store({
             return state.formStep
         },
         formStepName: function(state) {
-            return state.formData.journey[state.formStep]
+            return state.formData.journey[state.formStep].component
+        },
+        formStepDisplay: function(state) {
+            return state.formData.journey[state.formStep].display
         },
         reviewGift: function(state) {
             if (state.formStep == state.formData.journey.length-1) {

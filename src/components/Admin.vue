@@ -7,21 +7,38 @@
                 <pi-config></pi-config>
             </div>
             <div class="col-sm-6">
-                <data-import></data-import>
+                <form-item v-for="(item, index) in adminJourney" v-bind:item="item" v-bind:index="index" v-bind:key="item.id">
+                    <span slot="title">{{item.display}}</span>
+                </form-item>
             </div>
         </div>
+        <hr>
+        <data-import></data-import>
     </div>
 </template>
 
 <script>
 import DataImport from './AdminComponents/DataImport'
 import PersonalInfoConfig from './AdminComponents/PersonalInfoConfig'
+import FormItem from './AdminComponents/FormItem'
 
 export default {
     name: 'Admin',
     components: {
         'data-import': DataImport,
-        'pi-config': PersonalInfoConfig
+        'pi-config': PersonalInfoConfig,
+        'form-item': FormItem
+    },
+    computed: {
+        adminData: function() {
+            return this.$store.getters['admin/retrieveData']
+        },
+        adminJourney: function() {
+            return this.adminData.journey
+        }
+    },
+    methods: {
+        
     }
 }
 </script>

@@ -25,8 +25,11 @@ const admin = {
         }
     },
     mutations: {
-        addStep: function (state, stepName) {
-            state.data.journey.push(stepName)
+        addStep: function (state, step) {
+            state.data.journey.push(step)
+        },
+        deleteStep: function (state, stepIndex) {
+            state.data.journey.splice(stepIndex, 1);
         }
     },
     actions: {

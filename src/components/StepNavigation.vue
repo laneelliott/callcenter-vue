@@ -3,7 +3,7 @@
         <h5>Step Navigation</h5>
         <div class="row justify-content-center">
             <div class="btn-group" role="group">
-                <button class="btn btn-outline-primary" v-bind:class="[formStep == index ? selectedStep : '']" v-for="(step, index) in formFlow" :value="index" :key="step.id" @click="loadStep($event)">{{step}}</button>
+                <button class="btn btn-outline-primary" v-bind:class="[formStep == index ? selectedStep : '']" v-for="(step, index) in formFlow" :value="index" :key="step.id" @click="loadStep($event)">{{step.display}}</button>
             </div>
         </div>
     </div>
@@ -23,6 +23,9 @@ export default {
         },
         formStepName: function() {
             return this.$store.getters.formStepName
+        },
+        formStepDisply: function() {
+            return this.$store.getters.formStepDisplay
         },
         formFlow: function() {
             return this.$store.state.formData.journey

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row justify-content-center">
-            <button class="btn btn-outline-primary" @click="sendData">Send Data</button>
+            <button class="btn btn-outline-primary" v-bind:disabled="adminData.journey == ''" @click="sendData">Load Form</button>
         </div>
     </div>
 </template>
