@@ -1,0 +1,64 @@
+{
+	"title": "Fall Share Callcenter",
+	"type": "inbound-cc",
+	"operator": "volunteer",
+	"codes": {
+		"campaign": "FSH",
+		"appeal": "MGWS",
+		"designation": "U2",
+		"gift_source": "Web",
+		"corpgift": "fall-share",
+		"source": "NFMGWS"
+	},
+	"premium": {
+		"available": true,
+		"max": 2,
+		"premium_info": [{
+			"001395": {
+				"start_date": "",
+				"end_date": "",
+				"title": "The Bible",
+				"text": "And the fat cows ate the skinny cows.",
+				"img": "assets/paul/kjv/bible.png"
+			}
+		},
+		{
+			"001399": {
+				"start_date": "05/27/2020",
+				"end_date": "07/27/2020",
+				"title": "The Bible Calendar",
+				"text": "Because God knows what day it is.",
+				"img": "assets/paul/kjv/calendars/book-of-months2_GOODv4.png"
+			}
+		}]
+	},
+	"wizard-config": [{
+		"component": "name",
+		"config": "name-only",
+		"display": "Donor Name Only"
+	},
+	{
+		"component": "tender",
+		"config": [{
+			"component": "credit-card",
+			"config": "",
+			"display": "Credit Card Information"
+		},
+		{
+			"component": "echeck",
+			"config": "",
+			"display": "Echeck Information"
+		}],
+		"display": "Select Tender Type"
+	}],
+	"component-config": [{
+		"component": "credit-card",
+		"config": "",
+		"display": "Credit Card Information"
+	},
+	{
+		"component": "echeck",
+		"config": "",
+		"display": "Echeck Information"
+	}]
+}
