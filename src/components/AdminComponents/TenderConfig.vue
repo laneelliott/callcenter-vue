@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <h5 class="card-header"><i class="fas fa-pencil-alt float-left edit-btn" aria-expanded="false" @click="toggleEdit"></i>Tender Type<i class="fas fa-plus float-right add-btn" @click="add"></i></h5>
+        <h5 class="card-header"  @click.self="toggleEdit"><i class="fas fa-pencil-alt float-left edit-btn" aria-expanded="false"></i>Tender Type<i class="fas fa-plus float-right add-btn" @click="add"></i></h5>
         
         <div class="card-body" v-bind:class="{collapse: edit}">
             <div class="form-check form-check-inline">
@@ -64,6 +64,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.card-header {
+    cursor: pointer;
+}
 .add-btn, .edit-btn {
     font-weight: 900;
     font-size: 1.25rem;
