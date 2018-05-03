@@ -32,6 +32,7 @@
 			}
 		}]
 	},
+	"wizard":["name", "tender", "gift-recurrence"],
 	"wizard-config": [{
 		"component": "name",
 		"config": "name-only",

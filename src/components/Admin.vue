@@ -3,7 +3,8 @@
         <h1>Admin</h1>
         <hr/>
         <component :is="currentComponent"></component>
-        <button class="btn btn-outline-primary" style="margin-bottom: 20px;" @click="advanceAdminStep" v-if="currentComponent !== 'form-builder'">Next</button>
+        <button class="btn btn-outline-primary" style="margin-bottom: 40px; margin-top: 40px;" @click="decreaseAdminStep" v-if="adminStep !== 0">Previous</button>
+        <button class="btn btn-outline-primary" style="margin-bottom: 40px; margin-top: 40px;" @click="advanceAdminStep" v-if="currentComponent !== 'form-builder'">Next</button>
     </div>
 </template>
 
@@ -31,6 +32,9 @@ export default {
     methods: {
         advanceAdminStep: function() {
             return this.adminStep++
+        },
+        decreaseAdminStep: function() {
+            return this.adminStep--
         }
     }
 }
