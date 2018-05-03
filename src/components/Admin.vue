@@ -2,49 +2,36 @@
     <div class="container text-center">
         <h1>Admin</h1>
         <hr/>
-        <div class="row">
-            <div class="col-sm-6">
-                <pi-config></pi-config>
-                <tender-config></tender-config>
-                <gr-config></gr-config>
-            </div>
-            <div class="col-sm-6">
-                <form-item v-for="(item, index) in adminJourney" v-bind:item="item" v-bind:index="index" v-bind:key="item.id">
-                    <span slot="title">{{item.display}}</span>
-                </form-item>
-            </div>
-        </div>
-        <hr>
-        <data-import></data-import>
+        <component :is="currentComponent"></component>
+        <button class="btn btn-outline-primary" style="margin-bottom: 20px;" @click="advanceAdminStep" v-if="currentComponent !== 'form-builder'">Next</button>
     </div>
 </template>
 
 <script>
-import DataImport from './AdminComponents/DataImport'
-import PersonalInfoConfig from './AdminComponents/PersonalInfoConfig'
-import TenderConfig from './AdminComponents/TenderConfig'
-import GiftRecurrenceConfig from './AdminComponents/GiftRecurrenceConfig'
-import FormItem from './AdminComponents/FormItem'
+import FormBuilder from './AdminComponents/FormBuilder'
+import CodeConfiguration from './AdminComponents/CodeConfiguration'
 
 export default {
     name: 'Admin',
     components: {
-        'data-import': DataImport,
-        'pi-config': PersonalInfoConfig,
-        'tender-config': TenderConfig,
-        'gr-config': GiftRecurrenceConfig,
-        'form-item': FormItem
+        'form-builder': FormBuilder,
+        'code-configuration': CodeConfiguration
+    },
+    data() {
+        return {
+            components: ['code-configuration', 'form-builder'],
+            adminStep: 0
+        }
     },
     computed: {
-        adminData: function() {
-            return this.$store.getters['admin/retrieveData']
-        },
-        adminJourney: function() {
-            return this.adminData.journey
+        currentComponent: function() {
+            return this.components[this.adminStep]
         }
     },
     methods: {
-        
+        advanceAdminStep: function() {
+            return this.adminStep++
+        }
     }
 }
 </script>
