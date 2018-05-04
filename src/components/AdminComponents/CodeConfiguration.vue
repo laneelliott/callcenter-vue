@@ -38,7 +38,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-md-2 text-left">
-                Campaign:
+                <h5>Campaign:</h5>
             </div>
             <div class="col-md-4 text-left">
                 <div class="form-check form-check-inline">
@@ -64,7 +64,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-md-2 text-left">
-                Appeal:
+                <h5>Appeal:</h5>
             </div>
             <div class="col-md-4 text-left">
                 <div class="form-check form-check-inline">
@@ -90,7 +90,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-md-2 text-left">
-                Designation:
+                <h5>Designation:</h5>
             </div>
             <div class="col-md-4 text-left">
                 <div class="form-check form-check-inline">
@@ -116,7 +116,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-md-2 text-left">
-                Gift Source:
+                <h5>Gift Source:</h5>
             </div>
             <div class="col-md-4 text-left">
                 <div class="form-check form-check-inline">
@@ -142,7 +142,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-md-2 text-left">
-                Corp Gift:
+                <h5>Corp Gift:</h5>
             </div>
             <div class="col-md-4 text-left">
                 <div class="form-check form-check-inline">
@@ -168,7 +168,7 @@
         </div>
         <div class="row form-group justify-content-center">
             <div class="col-md-2 text-left">
-                Source Code:
+                <h5>Source Code:</h5>
             </div>
             <div class="col-md-4 text-left">
                 <div class="form-check form-check-inline">
